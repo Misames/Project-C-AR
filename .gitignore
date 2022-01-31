@@ -1,3 +1,10 @@
+# Vuforia
+/Assets/SamplesResources
+/Assets/Common
+/Asset/Editor
+/Asset/Resources
+/Packages/
+
 ### Unity ###
 /[Ll]ibrary/
 /[Tt]emp/
