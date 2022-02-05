@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject localRecord;
     [SerializeField] private GameObject liveRanking;
 
-
     void Start()
     {
         Debug.Log("scene start !");
