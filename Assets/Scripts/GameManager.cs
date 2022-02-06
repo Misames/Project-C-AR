@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    private float timer;
+    public static GameManager instance;
     private bool isPause;
     private Dictionary<int, GameObject> listPlayer = new Dictionary<int, GameObject>();
     [SerializeField] private TextMeshProUGUI timerUI;
@@ -13,22 +13,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject localRecord;
     [SerializeField] private GameObject liveRanking;
 
-    void Start()
+    private void Awake()
+    {
+        if (instance != null) return;
+        instance = this;
+    }
+
+    private void Start()
     {
         Debug.Log("scene start !");
     }
 
-    void Update()
+    private void Update()
     {
-        timer += Time.deltaTime;
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPause) Resume();
             else Pause();
         }
-
-        timerUI.text = timer.ToString();
+        timerUI.text = Mathf.Floor(Time.time / 60).ToString("00")
+                     + ":" + Mathf.FloorToInt(Time.time % 60).ToString("00")
+                     + "," + Mathf.FloorToInt((Time.time * 100) % 100).ToString("00");
     }
 
     public void Pause()
