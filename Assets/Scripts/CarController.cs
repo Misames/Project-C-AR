@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -11,14 +8,14 @@ public class CarController : MonoBehaviour
     public float maxSpeed = 40f;
     public float turnStrenght = 180f;
     public float gravityforce = 10f;
-    public float DragOnGround = 3f; 
-    
+    public float DragOnGround = 3f;
+
     private float SpeedInput;
     private float TurnInput;
     private bool isGrounded;
 
     public LayerMask Ground;
-    public float GroundRayLenght= 0.5f;
+    public float GroundRayLenght = 0.5f;
     public Transform groundRayPoint1;
 
     public Transform leftFrontWheel;
@@ -36,10 +33,11 @@ public class CarController : MonoBehaviour
         SpeedInput = 0f;
         if (Input.GetAxis("Vertical") > 0)
         {
-            SpeedInput = Input.GetAxis("Vertical") * forwardAcceleration  * 1000f;
-        }else if (Input.GetAxis("Vertical") < 0)
+            SpeedInput = Input.GetAxis("Vertical") * forwardAcceleration * 1000f;
+        }
+        else if (Input.GetAxis("Vertical") < 0)
         {
-            SpeedInput = Input.GetAxis("Vertical") * BackAcceleration* 1000f;
+            SpeedInput = Input.GetAxis("Vertical") * BackAcceleration * 1000f;
         }
 
         TurnInput = Input.GetAxis("Horizontal");
@@ -49,8 +47,8 @@ public class CarController : MonoBehaviour
                 TurnInput * turnStrenght * Time.deltaTime * Input.GetAxis("Vertical"), 0f));
         }
 
-        leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x,(TurnInput*MaxWheelTurn),leftFrontWheel.localRotation.eulerAngles.z);
-        RightFrontWheel.localRotation = Quaternion.Euler(RightFrontWheel.localRotation.eulerAngles.x,(TurnInput*MaxWheelTurn),RightFrontWheel.localRotation.eulerAngles.z);
+        leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (TurnInput * MaxWheelTurn), leftFrontWheel.localRotation.eulerAngles.z);
+        RightFrontWheel.localRotation = Quaternion.Euler(RightFrontWheel.localRotation.eulerAngles.x, (TurnInput * MaxWheelTurn), RightFrontWheel.localRotation.eulerAngles.z);
         transform.position = _Rigidbody.transform.position;
     }
 
@@ -58,12 +56,12 @@ public class CarController : MonoBehaviour
     {
         isGrounded = false;
         RaycastHit hit;
-        if (Physics.Raycast(groundRayPoint1.position, -transform.up,out hit,GroundRayLenght,Ground))
+        if (Physics.Raycast(groundRayPoint1.position, -transform.up, out hit, GroundRayLenght, Ground))
         {
-            
+
             isGrounded = true;
-            
-            transform.rotation = Quaternion.FromToRotation(transform.up ,hit.normal)*transform.rotation;
+
+            transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
         }
 
         if (isGrounded)
@@ -72,7 +70,7 @@ public class CarController : MonoBehaviour
             _Rigidbody.drag = DragOnGround;
             if (Mathf.Abs(SpeedInput) > 0)
             {
-                _Rigidbody.AddForce(transform.forward*SpeedInput);
+                _Rigidbody.AddForce(transform.forward * SpeedInput);
             }
         }
         else
