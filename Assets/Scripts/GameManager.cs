@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Debug.Log("scene start !");
+        Screen.autorotateToLandscapeLeft = true;
     }
 
     private void Update()
@@ -34,6 +35,16 @@ public class GameManager : MonoBehaviour
         timerUI.text = Mathf.Floor(Time.time / 60).ToString("00")
                      + ":" + Mathf.FloorToInt(Time.time % 60).ToString("00")
                      + "," + Mathf.FloorToInt((Time.time * 100) % 100).ToString("00");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void Pause()
