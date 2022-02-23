@@ -21,24 +21,19 @@ public class CarController : MonoBehaviour
     public Transform leftFrontWheel;
     public Transform RightFrontWheel;
     public float MaxWheelTurn = 25f;
+
     void Start()
     {
         _Rigidbody.transform.parent = null;
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         SpeedInput = 0f;
         if (Input.GetAxis("Vertical") > 0)
-        {
             SpeedInput = Input.GetAxis("Vertical") * forwardAcceleration * 1000f;
-        }
         else if (Input.GetAxis("Vertical") < 0)
-        {
             SpeedInput = Input.GetAxis("Vertical") * BackAcceleration * 1000f;
-        }
 
         TurnInput = Input.GetAxis("Horizontal");
         if (isGrounded)
@@ -58,20 +53,15 @@ public class CarController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(groundRayPoint1.position, -transform.up, out hit, GroundRayLenght, Ground))
         {
-
             isGrounded = true;
-
             transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
         }
 
         if (isGrounded)
         {
-
             _Rigidbody.drag = DragOnGround;
             if (Mathf.Abs(SpeedInput) > 0)
-            {
                 _Rigidbody.AddForce(transform.forward * SpeedInput);
-            }
         }
         else
         {

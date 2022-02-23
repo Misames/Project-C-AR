@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, GameObject> listPlayer = new Dictionary<int, GameObject>();
     [SerializeField] private TextMeshProUGUI timerUI;
     [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject localRecord;
     [SerializeField] private GameObject liveRanking;
 
     private void Awake()
