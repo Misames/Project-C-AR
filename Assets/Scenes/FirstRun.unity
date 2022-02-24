@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 704044257}
   - component: {fileID: 704044256}
   m_Layer: 5
-  m_Name: UI
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1977,5 +1977,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerUI: {fileID: 773888117}
   pauseMenu: {fileID: 1816336035}
-  localRecord: {fileID: 0}
   liveRanking: {fileID: 0}
