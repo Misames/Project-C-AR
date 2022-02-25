@@ -33,4 +33,9 @@ public class CarSelection : MonoBehaviour
         currentCar += change;
         SelectCar(currentCar);
     }
+
+    public int GetIDCar()
+    {
+        return this.currentCar;
+    }
 }

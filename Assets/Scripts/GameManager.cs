@@ -1,25 +1,20 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private bool isPause;
     private float gameTime;
-    private bool gameState;
+    private bool gameState = false;
     private int lapMake;
-    private int playerPosition;
-    private int numberPlayer = 12;
+    private int IDCar;
+    private string nickname = "joueur1";
     [SerializeField] private int lapNumber = 3;
-    [SerializeField] private int countDown = 3;
-    [SerializeField] private GameObject myPlayer;
-    private Dictionary<int, GameObject> listPlayer = new Dictionary<int, GameObject>();
     [SerializeField] private TextMeshProUGUI timerUI;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject liveRanking;
-    [SerializeField] private TextMeshProUGUI playerPositionRanking;
     [SerializeField] private TextMeshProUGUI liveLap;
 
     private void Awake()
@@ -30,19 +25,19 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        IDCar = PlayerPrefs.GetInt("IDCar");
         Screen.autorotateToLandscapeLeft = true;
         lapMake = 0;
         gameTime = 0.0f;
         gameState = false;
         isPause = false;
-        playerPosition = 1;
-        playerPositionRanking.text = playerPosition + " / " + numberPlayer;
         liveLap.text = lapMake + " / " + lapNumber;
-        listPlayer.Add(0, myPlayer);
+        liveRanking.SetActive(false);
     }
 
     private void Update()
     {
+        Debug.Log("game state " + gameState);
         if (lapMake > lapNumber)
         {
             gameState = false;
@@ -104,8 +99,9 @@ public class GameManager : MonoBehaviour
 
     private void SaveGame()
     {
-        // save la partie
-        // on save quand tous les joueurs sont arrivaient
-        // et si ils ont pas fini 30 secondes après le premier la game se fini
+        PlayerPrefs.SetFloat("time", this.gameTime);
+        PlayerPrefs.SetString("nickname", this.nickname);
+        PlayerPrefs.SetInt("map", 1);
+        PlayerPrefs.Save();
     }
 }
