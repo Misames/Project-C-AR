@@ -1,12 +1,8 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    [SerializeField] GameObject MenuOption;
-    [SerializeField] GameObject GameMode;
-    [SerializeField] GameObject PopupQuit;
-
     public void QuiteGame(bool value)
     {
         if (value == true)
@@ -16,5 +12,10 @@ public class MainMenu : MonoBehaviour
 #endif
             Application.Quit();
         }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("FirstRun");
     }
 }

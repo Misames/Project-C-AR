@@ -27,7 +27,7 @@ public class CarSelection : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(i == index);
     }
 
-    public void changeCar(int change)
+    public void ChangeCar(int change)
     {
         transform.GetChild(currentCar).transform.rotation = originalPosition;
         currentCar += change;
