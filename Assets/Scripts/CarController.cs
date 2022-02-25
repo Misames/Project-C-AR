@@ -10,7 +10,7 @@ public class CarController : MonoBehaviour
     public float BackAcceleration = 3f;
     public float maxSpeed = 40f;
     public float turnStrenght = 180f;
-    public float gravityforce = 10f;
+    public float gravityforce = 15f;
     public float DragOnGround = 3f; 
     
     private float SpeedInput;
@@ -22,8 +22,11 @@ public class CarController : MonoBehaviour
     public Transform groundRayPoint1;
 
     public Transform leftFrontWheel;
-    public Transform RightFrontWheel;
+    public Transform rightFrontWheel;
+    public Transform leftBackWheel;
+    public Transform rightBackWheel;
     public float MaxWheelTurn = 25f;
+
     void Start()
     {
         _Rigidbody.transform.parent = null;
@@ -40,17 +43,21 @@ public class CarController : MonoBehaviour
         }else if (Input.GetAxis("Vertical") < 0)
         {
             SpeedInput = Input.GetAxis("Vertical") * BackAcceleration* 1000f;
+            if (SpeedInput < 0)
+            {
+                SpeedInput = 0;
+            }
         }
 
-        TurnInput = Input.GetAxis("Horizontal");
         if (isGrounded)
         {
+            TurnInput = Input.GetAxis("Horizontal");
+        
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0f,
-                TurnInput * turnStrenght * Time.deltaTime * Input.GetAxis("Vertical"), 0f));
+                TurnInput * turnStrenght * Time.deltaTime, 0f));
         }
-
         leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x,(TurnInput*MaxWheelTurn),leftFrontWheel.localRotation.eulerAngles.z);
-        RightFrontWheel.localRotation = Quaternion.Euler(RightFrontWheel.localRotation.eulerAngles.x,(TurnInput*MaxWheelTurn),RightFrontWheel.localRotation.eulerAngles.z);
+        rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x,(TurnInput*MaxWheelTurn),rightFrontWheel.localRotation.eulerAngles.z);
         transform.position = _Rigidbody.transform.position;
     }
 
@@ -80,5 +87,7 @@ public class CarController : MonoBehaviour
             _Rigidbody.drag = 0.1f;
             _Rigidbody.AddForce(Vector3.up * -gravityforce * 100f);
         }
+
+
     }
 }
