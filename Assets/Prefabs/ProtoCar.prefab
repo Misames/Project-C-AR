@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 5493872381774279905}
   - component: {fileID: 5528608801430574694}
   m_Layer: 0
-  m_Name: voiture Variant
+  m_Name: ProtoCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

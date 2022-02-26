@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject liveRanking;
     [SerializeField] private TextMeshProUGUI liveLap;
+    [SerializeField] private GameObject carPlayer;
 
     private void Awake()
     {
@@ -37,7 +39,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("game state " + gameState);
         if (lapMake > lapNumber)
         {
             gameState = false;
@@ -92,9 +93,10 @@ public class GameManager : MonoBehaviour
         gameState = true;
     }
 
-    private void LapPassed()
+    public void LapPassed()
     {
         lapMake++;
+        liveLap.text = lapMake + " / " + lapNumber;
     }
 
     private void SaveGame()
@@ -104,4 +106,22 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("map", 1);
         PlayerPrefs.Save();
     }
+
+    void StopGame()
+    {
+        carPlayer.GetComponent<CarController>().enabled = false;
+        StartCoroutine(CountDown());
+    }
+
+    IEnumerator CountDown()
+    {
+        yield return new WaitForSeconds(3);
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        carPlayer.GetComponent<CarController>().enabled = true;
+    }
+
 }
