@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -18,7 +15,7 @@ public class CarController : MonoBehaviour
     private bool isGrounded;
 
     public LayerMask Ground;
-    public float GroundRayLenght= 0.5f;
+    public float GroundRayLenght = 0.5f;
     public Transform groundRayPoint1;
 
     public Transform leftFrontWheel;
@@ -32,10 +29,8 @@ public class CarController : MonoBehaviour
         _Rigidbody.transform.parent = null;
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         SpeedInput = 0f;
         if (Input.GetAxis("Vertical") > 0)
         {
@@ -65,22 +60,17 @@ public class CarController : MonoBehaviour
     {
         isGrounded = false;
         RaycastHit hit;
-        if (Physics.Raycast(groundRayPoint1.position, -transform.up,out hit,GroundRayLenght,Ground))
+        if (Physics.Raycast(groundRayPoint1.position, -transform.up, out hit, GroundRayLenght, Ground))
         {
-            
             isGrounded = true;
-            
-            transform.rotation = Quaternion.FromToRotation(transform.up ,hit.normal)*transform.rotation;
+            transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
         }
 
         if (isGrounded)
         {
-
             _Rigidbody.drag = DragOnGround;
             if (Mathf.Abs(SpeedInput) > 0)
-            {
-                _Rigidbody.AddForce(transform.forward*SpeedInput);
-            }
+                _Rigidbody.AddForce(transform.forward * SpeedInput);
         }
         else
         {
