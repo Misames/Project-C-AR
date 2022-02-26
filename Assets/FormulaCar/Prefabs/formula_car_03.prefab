@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4854926409407711436}
   m_Layer: 0
   m_Name: formula_car_03
-  m_TagString: Untagged
+  m_TagString: CarPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Rigidbody: {fileID: 6035148723936700056}
-  forwardAcceleration: 8
+  forwardAcceleration: 15
   BackAcceleration: 4
-  maxSpeed: 50
+  maxSpeed: 70
   turnStrenght: 180
   gravityforce: 10
   DragOnGround: 2
