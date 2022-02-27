@@ -485,18 +485,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1978744567}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2101897204}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -521,21 +509,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1458112618}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1978744567}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StopGame
+        m_MethodName: StartCount
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2388,11 +2364,16 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 704044255}
+    - target: {fileID: 6303331478924210166, guid: e48f2313c6066f2469686f560a2935f4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e48f2313c6066f2469686f560a2935f4, type: 3}
---- !u!1 &1458112618 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6609181181460507485, guid: e48f2313c6066f2469686f560a2935f4,
+--- !u!95 &1458112620 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6303331478924210166, guid: e48f2313c6066f2469686f560a2935f4,
     type: 3}
   m_PrefabInstance: {fileID: 1400248725}
   m_PrefabAsset: {fileID: 0}
@@ -3177,6 +3158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0337eb315bd53d0449cb3b92e6303cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starterAnim: {fileID: 1458112620}
+  IDMap: 1
   lapNumber: 3
   timerUI: {fileID: 773888117}
   pauseMenu: {fileID: 1816336035}

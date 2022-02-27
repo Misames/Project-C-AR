@@ -6,12 +6,13 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Animator monAnim;
+    public Animator starterAnim;
     private bool isPause;
     private float gameTime;
     private bool gameState = false;
     private int lapMake;
     private int IDCar;
+    public int IDMap;
     private string nickname = "joueur1";
     [SerializeField] private int lapNumber = 3;
     [SerializeField] private TextMeshProUGUI timerUI;
@@ -58,6 +59,9 @@ public class GameManager : MonoBehaviour
             if (isPause) Resume();
             else Pause();
         }
+
+        if (Input.GetKey(KeyCode.A))
+            Restart();
     }
 
     public void MainMenu()
@@ -100,9 +104,10 @@ public class GameManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("time", this.gameTime);
         PlayerPrefs.SetString("nickname", this.nickname);
-        PlayerPrefs.SetInt("map", 1);
+        PlayerPrefs.SetInt("map", this.IDMap);
         PlayerPrefs.Save();
         Time.timeScale = 0f;
+        // Afficher menu de fin
     }
 
     public void StartCount()
@@ -113,15 +118,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CountDown()
     {
-        monAnim.GetComponent<Animator>().enabled = true;
+        starterAnim.GetComponent<Animator>().enabled = true;
         yield return new WaitForSeconds(3);
-        StartGame();
         gameState = true;
-    }
-
-    private void StartGame()
-    {
         carPlayer.GetComponent<CarController>().enabled = true;
     }
-
 }
