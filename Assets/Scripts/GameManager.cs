@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI liveLap;
     [SerializeField] private GameObject carPlayer;
 
-    private void Awake()
+   /* private void Awake()
     {
         if (instance != null) return;
         instance = this;
-    }
+    } */
 
     private void Start()
     {

@@ -4,11 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 22
-  productGUID: 58cee7ab3ee8bda42874bbfc4acc0fa3
+  productGUID: 00000000000000000000000000000000
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 3
+  defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -77,7 +77,7 @@ PlayerSettings:
   androidFullscreenMode: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 0
-  runInBackground: 0
+  runInBackground: 1
   captureSingleScreen: 0
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
@@ -135,7 +135,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0
+  bundleVersion: 10.5.5
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -154,10 +154,9 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.vuforia.engine.VuforiaEngine
-    Lumin: com.PTCInc.VuforiaEngine
-    Standalone: com.PTCInc.VuforiaEngine
-    iPhone: com.vuforia.engine.VuforiaEngine
+    Android: com.vuforia.engine.coresamples
+    Standalone: com.vuforia.engine.coresamples
+    iPhone: com.vuforia.engine.coresamples
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -236,7 +235,7 @@ PlayerSettings:
   iOSAutomaticallyDetectAndAddCapabilities: 1
   appleEnableProMotion: 0
   shaderPrecisionModel: 0
-  clonedFromGUID: 87ac4ca69ece04351baca90e0ec64fa8
+  clonedFromGUID: 382163f3e65574800ab1ca3161b78f90
   templatePackageId: 
   templateDefaultScene: 
   useCustomMainManifest: 0
@@ -546,7 +545,7 @@ PlayerSettings:
     m_GraphicsJobMode: 0
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: AndroidPlayer
-    m_APIs: 1500000008000000
+    m_APIs: 150000000b00000008000000
     m_Automatic: 0
   - m_BuildTarget: iOSSupport
     m_APIs: 10000000
@@ -845,14 +844,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Vuforia.Engine.VuforiaEngine
+  metroPackageName: Vuforia.Engine.CoreSamplesUnity
   metroPackageVersion: 10.5.5.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: Vuforia
   metroCertificateIssuer: Vuforia
   metroCertificateNotAfter: 80a428773e1cd501
-  metroApplicationDescription: Vuforia Engine
+  metroApplicationDescription: Vuforia Samples
   wsaImages:
     65636: Assets/Common/Icons/UWP/StoreLogo.scale-100.png
     65661: Assets/Common/Icons/UWP/StoreLogo.scale-125.png
@@ -883,7 +882,7 @@ PlayerSettings:
     2293910: Assets/Common/Icons/UWP/Wide310x150Logo.scale-150.png
     2293960: Assets/Common/Icons/UWP/Wide310x150Logo.scale-200.png
     2294160: Assets/Common/Icons/UWP/Wide310x150Logo.scale-400.png
-  metroTileShortName: Vuforia Engine
+  metroTileShortName: 
   metroTileShowName: 0
   metroMediumTileShowName: 1
   metroLargeTileShowName: 0
@@ -897,6 +896,7 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 1
   platformCapabilities:
     WindowsStoreApps:
+      EnterpriseAuthentication: False
       OfflineMapsManagement: False
       HumanInterfaceDevice: False
       Location: False
@@ -909,7 +909,6 @@ PlayerSettings:
       InternetClientServer: False
       VideosLibrary: False
       Objects3D: False
-      InternetClient: True
       RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
@@ -930,10 +929,10 @@ PlayerSettings:
       PointOfService: False
       RecordedCallsFolder: False
       Contacts: False
-      Proximity: False
+      InternetClient: True
       CodeGeneration: False
       BackgroundMediaPlayback: False
-      EnterpriseAuthentication: False
+      Proximity: False
   metroTargetDeviceFamilies:
     Desktop: False
     Holographic: False
