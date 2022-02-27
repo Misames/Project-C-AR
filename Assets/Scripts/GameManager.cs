@@ -6,6 +6,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public Animator monAnim;
     private bool isPause;
     private float gameTime;
     private bool gameState = false;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         isPause = false;
         liveLap.text = lapMake + " / " + lapNumber;
         liveRanking.SetActive(false);
+        carPlayer.GetComponent<CarController>().enabled = false;
     }
 
     private void Update()
@@ -88,11 +90,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void Play()
-    {
-        gameState = true;
-    }
-
     public void LapPassed()
     {
         lapMake++;
@@ -105,9 +102,10 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetString("nickname", this.nickname);
         PlayerPrefs.SetInt("map", 1);
         PlayerPrefs.Save();
+        Time.timeScale = 0f;
     }
 
-    void StopGame()
+    public void StartCount()
     {
         carPlayer.GetComponent<CarController>().enabled = false;
         StartCoroutine(CountDown());
@@ -115,11 +113,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CountDown()
     {
+        monAnim.GetComponent<Animator>().enabled = true;
         yield return new WaitForSeconds(3);
         StartGame();
+        gameState = true;
     }
 
-    void StartGame()
+    private void StartGame()
     {
         carPlayer.GetComponent<CarController>().enabled = true;
     }
