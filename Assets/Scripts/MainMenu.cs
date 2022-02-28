@@ -5,6 +5,11 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private CarSelection carSelector;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void QuiteGame(bool value)
     {
         if (value == true)
