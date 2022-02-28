@@ -1057,6 +1057,10 @@ PrefabInstance:
       value: CarPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 401502, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 401502, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
@@ -1075,6 +1079,10 @@ PrefabInstance:
     - target: {fileID: 401502, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414408, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 431572, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
       propertyPath: m_RootOrder
@@ -1119,6 +1127,18 @@ PrefabInstance:
     - target: {fileID: 431572, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 464236, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 470458, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 494942, guid: 3091c576cf5cd92468b5afb7c5a9b584, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2609873996281586768, guid: 3091c576cf5cd92468b5afb7c5a9b584,
         type: 3}
