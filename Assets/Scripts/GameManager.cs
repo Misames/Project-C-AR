@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Animator starterAnim;
-    private bool isPause;
-    private float gameTime;
+    private int lapMake = 1;
+    private float gameTime = 0f;
+    private bool isPause = false;
     private bool gameState = false;
-    private int lapMake;
-    private int IDCar;
-    public int IDMap;
+    private int IDCar = 0;
+    public int IDMap = 0;
     private string nickname = "joueur1";
     [SerializeField] private int lapNumber = 3;
     [SerializeField] private TextMeshProUGUI timerUI;
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject liveRanking;
     [SerializeField] private TextMeshProUGUI liveLap;
     [SerializeField] private GameObject carPlayer;
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private GameObject[] listCar;
 
     private void Awake()
     {
@@ -29,14 +31,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        IDCar = PlayerPrefs.GetInt("IDCar");
-        Screen.autorotateToLandscapeLeft = true;
-        lapMake = 0;
-        gameTime = 0.0f;
-        gameState = false;
-        isPause = false;
         liveLap.text = lapMake + " / " + lapNumber;
         liveRanking.SetActive(false);
+        carPlayer = listCar[IDCar];
         carPlayer.GetComponent<CarController>().enabled = false;
     }
 
@@ -51,7 +48,12 @@ public class GameManager : MonoBehaviour
         if (gameState == true)
         {
             gameTime += Time.deltaTime;
-            timerUI.text = gameTime.ToString();
+            timerUI.text = Mathf.Floor(gameTime / 60).ToString("00")
+                    + ":" + Mathf.FloorToInt(gameTime % 60).ToString("00")
+                    + "," + Mathf.FloorToInt((gameTime * 100) % 100).ToString("00");
+
+            if (Input.GetKey(KeyCode.A))
+                Restart();
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -59,9 +61,6 @@ public class GameManager : MonoBehaviour
             if (isPause) Resume();
             else Pause();
         }
-
-        if (Input.GetKey(KeyCode.A))
-            Restart();
     }
 
     public void MainMenu()
@@ -96,8 +95,8 @@ public class GameManager : MonoBehaviour
 
     public void LapPassed()
     {
-        lapMake++;
         liveLap.text = lapMake + " / " + lapNumber;
+        lapMake++;
     }
 
     private void SaveGame()
@@ -105,9 +104,13 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("time", this.gameTime);
         PlayerPrefs.SetString("nickname", this.nickname);
         PlayerPrefs.SetInt("map", this.IDMap);
+        PlayerPrefs.SetInt("IDCar", this.IDCar);
         PlayerPrefs.Save();
         Time.timeScale = 0f;
-        // Afficher menu de fin
+        endPanel.SetActive(true);
+        endPanel.GetComponentInChildren<TextMeshProUGUI>().text = "Fin de la course en " + Mathf.Floor(gameTime / 60).ToString("00")
+                    + ":" + Mathf.FloorToInt(gameTime % 60).ToString("00")
+                    + "," + Mathf.FloorToInt((gameTime * 100) % 100).ToString("00");
     }
 
     public void StartCount()
