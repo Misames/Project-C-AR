@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   check: 0
-  canvas: {fileID: 0}
 --- !u!1 &6303331477491996739
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6303331479064823369}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
